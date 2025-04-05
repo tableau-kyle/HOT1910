@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Embed Viewer</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // Get URL parameter
+    const params = new URLSearchParams(window.location.search);
+    const targetUrl = params.get("url");
+
+    if (targetUrl) {
+      const iframe = document.createElement("iframe");
+      iframe.src = decodeURIComponent(targetUrl);
+      document.body.appendChild(iframe);
+    } else {
+      document.body.innerHTML = "<p style='text-align:center;margin-top:2em;'>Missing URL parameter.</p>";
+    }
+  </script>
+</body>
+</html>
+
